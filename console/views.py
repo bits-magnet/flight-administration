@@ -8,6 +8,24 @@ def map(request):
     return render(request, 'map.html')
 
 
+def see_map_by_id(request, pk):
+    device = PhoneDetail.objects.get(id=pk)
+    print(device)
+    context = {
+        'device' : device
+    }
+    return render(request, 'map.html', context)
+
+
+def devices(request):
+    devices = PhoneDetail.objects.all()
+    context = {
+        'devices': devices
+    }
+    print(devices)
+    return render(request, 'devicelist.html', context)
+
+
 class PhoneListView(generics.ListCreateAPIView):
     serializer_class = PhoneListSerializer
     queryset = PhoneList.objects.all()

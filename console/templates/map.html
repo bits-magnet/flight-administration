@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Simple Map</title>
+     <meta http-equiv="refresh" content="6; URL=http://127.0.0.1:8000/devices/{{device.id}}/map/">
+
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -16,24 +18,41 @@
     </style>
   </head>
   <body>
+  	<div id="map_wrapper">
+    <div id="map_canvas" class="mapping"></div>
+	</div>
     <div id="map"></div>
     <script>
       var map;
       function initMap() {
-        var myLatLng = {lat:18.52, lng: 73.85};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 23,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Mobile Phone here'
-        });
+  var center = {lat: {{device.center_lat}}, lng: {{device.center_lon}}};
+  var locations = [
+    ['center_name', {{device.center_lat}}, {{device.center_lon}}],
+    ['{{device.device_name}}', {{device.device_lat}}, {{device.device_lon}}]
+  ];
+var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 6,
+    center: center
+  });
+var infowindow =  new google.maps.InfoWindow({});
+var marker, count;
+for (count = 0; count < locations.length; count++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+      map: map,
+      title: locations[count][0]
+    });
+google.maps.event.addListener(marker, 'click', (function (marker, count) {
+      return function () {
+        infowindow.setContent(locations[count][0]);
+        infowindow.open(map, marker);
       }
+    })(marker, count));
+  }
+}
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw&callback=initMap"
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;callback=initMap"
     async defer></script>
   </body>
 </html>

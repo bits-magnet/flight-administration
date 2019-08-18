@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1>List of devices that are out of range</h1> 
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sr. No.</th>
+      <th scope="col">Device name</th>
+      <th scope="col">Device id</th>
+      <th scope="col">Current Location</th>
+      <th scope="col">Inrange</th>
+      <th scope="col">Locate on Map</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  	{% for d in devices %}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{d.id}}</td>
+      <td>{{d.name}}</td>
+      <td>{{d.id}}</td>
+      <td>{{d.lat}}</td>
+      <td><a href = "{{d.id}}/map/"><button> see live </button></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

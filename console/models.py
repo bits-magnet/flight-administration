@@ -22,8 +22,11 @@ class QRData(models.Model):
 class PhoneDetail(models.Model):
     device_id = models.CharField(default='', max_length=100)
     device_name = models.CharField(default='', max_length=100)
-    lat = models.FloatField(default=0)
-    lon = models.FloatField(default=0)
+    center_lat = models.FloatField(default=0)
+    center_lon = models.FloatField(default=0)
+    device_lat = models.FloatField(default=0)
+    device_lon = models.FloatField(default=0)
+    inrange = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.lat) + ' ' + str(self.lon)
+        return str(self.device_lat) + ' ' + str(self.device_lon)
