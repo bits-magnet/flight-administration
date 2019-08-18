@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import QRData, PhoneList, PhoneLocation
+from .models import QRData, PhoneList, PhoneDetail
 
 
 class QRDataSerializer(serializers.ModelSerializer):
@@ -9,13 +9,13 @@ class QRDataSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PhoneListSerailizer(serializers.ModelSerializer):
+class PhoneListSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhoneList
         fields = '__all__'
 
 
-class PhoneLocationSerializer(serializers.ModelSerializer):
+class PhoneDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PhoneLocation
+        model = PhoneDetail
         fields = '__all__'

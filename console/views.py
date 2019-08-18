@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import PhoneList, QRData, PhoneLocation
+from .models import PhoneList, QRData, PhoneDetail
 from rest_framework import generics
-from .serializers import PhoneListSerailizer, QRDataSerializer, PhoneLocationSerializer
+from .serializers import PhoneListSerializer, QRDataSerializer, PhoneDetailSerializer
 
 
 def map(request):
@@ -9,7 +9,7 @@ def map(request):
 
 
 class PhoneListView(generics.ListCreateAPIView):
-    serializer_class = PhoneListSerailizer
+    serializer_class = PhoneListSerializer
     queryset = PhoneList.objects.all()
     filter_fields = '__all__'
     ordering_fields = '__all__'
@@ -17,7 +17,7 @@ class PhoneListView(generics.ListCreateAPIView):
 
 class PhoneDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = PhoneList.objects.all()
-    serializer_class = PhoneListSerailizer
+    serializer_class = PhoneListSerializer
 
 
 class QRDataListView(generics.ListCreateAPIView):
@@ -33,12 +33,12 @@ class QRDataDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PhoneLoactionListView(generics.ListCreateAPIView):
-    serializer_class = PhoneLocationSerializer
-    queryset = PhoneLocation.objects.all()
+    serializer_class = PhoneDetailSerializer
+    queryset = PhoneDetail.objects.all()
     filter_fields = '__all__'
     ordering_fields = '__all__'
 
 
 class QRDataDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = PhoneLocation.objects.all()
-    serializer_class = PhoneLocationSerializer
+    queryset = PhoneDetail.objects.all()
+    serializer_class = PhoneDetailSerializer

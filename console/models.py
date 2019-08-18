@@ -19,7 +19,9 @@ class QRData(models.Model):
         return self.name
 
 
-class PhoneLocation(models.Model):
+class PhoneDetail(models.Model):
+    device_id = models.CharField(default='', max_length=100)
+    device_name = models.CharField(default='', max_length=100)
     lat = models.FloatField(default=0)
     lon = models.FloatField(default=0)
 
