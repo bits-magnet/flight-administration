@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import QRDataListView, QRDataDetailView, PhoneListView, PhoneDetailView
+from .views import QRDataListView, QRDataDetailView, PhoneListView, PhoneDetailView, map
 from django.urls import path
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/phone/<int:pk>', PhoneDetailView.as_view()),
     path('api/qr/', QRDataListView.as_view()),
     path('api/qr/<int:pk>', QRDataDetailView.as_view()),
+    path('map/', map),
 ]

@@ -17,3 +17,11 @@ class QRData(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PhoneLocation(models.Model):
+    lat = models.FloatField(default=0)
+    lon = models.FloatField(default=0)
+
+    def __str__(self):
+        return str(self.lat) + ' ' + str(self.lon)
