@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import QRDataListView, QRDataDetailView, PhoneListView, PhoneDetailView, map, devices, see_map_by_id
+from .views import QRDataListView, QRDataDetailView, PhoneListView, PhoneDetailView, map, devices, see_map_by_id, index
 from django.urls import path
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('map/', map),
     path('devices/', devices),
     path('devices/<int:pk>/map/', see_map_by_id),
+    path('', index)
 ]

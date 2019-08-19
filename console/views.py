@@ -4,6 +4,10 @@ from rest_framework import generics
 from .serializers import PhoneListSerializer, QRDataSerializer, PhoneDetailSerializer
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def map(request):
     return render(request, 'map.html')
 
