@@ -35,13 +35,13 @@ class CitizenList(generics.ListCreateAPIView):
 
 
 class AirportDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Airport.objects.all()
+    queryset = Airports.objects.all()
     serializer_class = AirportSerializer
 
 
 class AirportList(generics.ListCreateAPIView):
     serializer_class = AirportSerializer
-    queryset = Airport.objects.all()
+    queryset = Airports.objects.all()
     filter_backends = (DjangoFilterBackend,filters.OrderingFilter,filters.SearchFilter,)
     filter_fields = '__all__'
     ordering_fields = '__all__'

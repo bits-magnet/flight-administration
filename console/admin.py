@@ -4,7 +4,7 @@ from .models import *
 # #
 
 admin.site.register(Citizen)
-admin.site.register(Airport)
+admin.site.register(Airports)
 admin.site.register(Plane)
 admin.site.register(Flight)
 admin.site.register(Booking)

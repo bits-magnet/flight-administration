@@ -3,18 +3,17 @@ from django.utils import timezone
 
 # # #
 
+class Airports(models.Model):
+    code = models.IntegerField()
+    name = models.CharField(default='', max_length=50)
+    latitude = models.IntegerField()
+    longitude = models.IntegerField()
+
 
 class Citizen(models.Model):
     name = models.CharField(default='', max_length=50)
     age = models.IntegerField()
     passport_number = models.IntegerField()
-
-
-class Airport(models.Model):
-    name = models.CharField(max_length=100, default='')
-    longitude = models.IntegerField()
-    latitude = models.IntegerField()
-
 
 class Plane(models.Model):
     company = models.CharField(default='', max_length=50)
@@ -22,8 +21,8 @@ class Plane(models.Model):
 
 
 class Flight(models.Model):
-    flight_from = models.ForeignKey(Airport, related_name='flight_from', on_delete=models.CASCADE)
-    flight_to = models.ForeignKey(Airport, related_name='flight_to', on_delete=models.CASCADE)
+    flight_from = models.ForeignKey(Airports, related_name='flight_from', on_delete=models.CASCADE)
+    flight_to = models.ForeignKey(Airports, related_name='flight_to', on_delete=models.CASCADE)
     plane_id = models.ForeignKey(Plane, on_delete=models.CASCADE)
     time_of_arrival = models.DateTimeField(default=timezone.now)
     time_of_boarding = models.DateTimeField(default=timezone.now)

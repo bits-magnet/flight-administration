@@ -4,6 +4,7 @@ from .models import *
 
 # #
 
+
 class CitizenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Citizen
@@ -12,7 +13,7 @@ class CitizenSerializer(serializers.ModelSerializer):
 
 class AirportSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Airport
+        model = Airports
         fields = '__all__'
 
 
