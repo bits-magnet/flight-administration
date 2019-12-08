@@ -4,10 +4,11 @@ from django.utils import timezone
 # # #
 
 class Airports(models.Model):
-    code = models.IntegerField()
     name = models.CharField(default='', max_length=50)
+    code = models.CharField(default='', max_length=10)
     latitude = models.IntegerField()
     longitude = models.IntegerField()
+
 
 
 class Citizen(models.Model):
