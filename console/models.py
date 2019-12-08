@@ -11,7 +11,7 @@ class Citizen(models.Model):
 
 
 class Airport(models.Model):
-    code = models.CharField(max_length=100, default='')
+    name = models.CharField(max_length=100, default='')
     longitude = models.IntegerField()
     latitude = models.IntegerField()
 
