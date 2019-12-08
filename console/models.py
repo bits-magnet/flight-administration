@@ -19,7 +19,7 @@ class Citizen(models.Model):
     passport_number = models.IntegerField()
 
     def __str__(self):
-        self.name
+        return self.name
 
 
 class Plane(models.Model):
