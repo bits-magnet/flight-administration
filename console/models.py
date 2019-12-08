@@ -72,7 +72,7 @@ class Promotion(models.Model):
     valid = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name + ' applied with ' +str(self.discount_percent)
+        return self.name + ' applied with ' + str(self.discount_percent)
 
 
 class Transaction(models.Model):
